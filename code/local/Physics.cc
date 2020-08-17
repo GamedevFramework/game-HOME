@@ -266,7 +266,7 @@ namespace home {
             shape.CreateLoop(line.data(), line.size());
           } else {
             assert(polyline.isChain());
-            shape.CreateChain(line.data(), line.size());
+            shape.CreateChain(line.data(), line.size(), line.front(), line.back());
           }
 
           b2BodyDef bodyDef;

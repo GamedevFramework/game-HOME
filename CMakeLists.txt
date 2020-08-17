@@ -8,7 +8,7 @@ include(GNUInstallDirs)
 
 find_package(gf REQUIRED COMPONENTS graphics)
 find_package(SFML REQUIRED COMPONENTS audio)
-find_package(Box2D REQUIRED)
+find_package(box2d REQUIRED)
 
 set(HOME_DATA_DIR "${CMAKE_INSTALL_PREFIX}/share/games/HOME")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/code/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
@@ -32,7 +32,6 @@ add_executable(HOME
 
 target_include_directories(HOME
   PRIVATE
-    ${BOX2D_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/code
     ${CMAKE_CURRENT_BINARY_DIR}
 )
@@ -41,7 +40,7 @@ target_link_libraries(HOME
   PUBLIC
     gf::graphics
     sfml-audio
-    ${BOX2D_LIBRARIES}
+    box2d::box2d
 )
 
 install(
