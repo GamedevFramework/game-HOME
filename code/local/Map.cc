@@ -45,7 +45,7 @@ namespace home {
         }
 
         gf::Log::info("Parsing layer '%s'\n", layer.name.c_str());
-        assert(map.orientation == gf::TileOrientation::Staggered);
+        assert(map.orientation == gf::CellOrientation::Staggered);
 
         m_layers.push_back(gf::makeTileLayer(map, layer, gResourceManager()));
       }
