@@ -26,7 +26,6 @@
 #include <gf/RenderWindow.h>
 #include <gf/Singleton.h>
 #include <gf/Tmx.h>
-#include <gf/Unused.h>
 #include <gf/ViewContainer.h>
 #include <gf/Views.h>
 #include <gf/Window.h>
@@ -178,16 +177,14 @@ int main() {
 
   GameState state = GameState::Playing;
 
-  home::gMessageManager().registerHandler<home::GameOver>([&state](gf::Id type, gf::Message *msg) {
+  home::gMessageManager().registerHandler<home::GameOver>([&state]([[maybe_unused]] gf::Id type, [[maybe_unused]] gf::Message *msg) {
     assert(type == home::GameOver::type);
-    gf::unused(type, msg);
     state = GameState::Failure;
     return gf::MessageStatus::Die;
   });
 
-  home::gMessageManager().registerHandler<home::Victory>([&state](gf::Id type, gf::Message *msg) {
+  home::gMessageManager().registerHandler<home::Victory>([&state]([[maybe_unused]] gf::Id type, [[maybe_unused]] gf::Message *msg) {
     assert(type == home::Victory::type);
-    gf::unused(type, msg);
     state = GameState::Success;
     return gf::MessageStatus::Die;
   });

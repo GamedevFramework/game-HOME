@@ -20,7 +20,6 @@
 #include <gf/Log.h>
 #include <gf/RenderTarget.h>
 #include <gf/Shapes.h>
-#include <gf/Unused.h>
 #include <gf/VectorOps.h>
 
 #include "Singletons.h"
@@ -269,16 +268,14 @@ namespace home {
     return gf::MessageStatus::Keep;
   }
 
-  gf::MessageStatus Hero::onHarvestSupply(gf::Id id, gf::Message *msg) {
+  gf::MessageStatus Hero::onHarvestSupply([[maybe_unused]] gf::Id id, [[maybe_unused]] gf::Message *msg) {
     assert(id == HarvestSupply::type);
-    gf::unused(id, msg);
     m_activity = Activity::Mining;
     return gf::MessageStatus::Keep;
   }
 
-  gf::MessageStatus Hero::onGameOver(gf::Id id, gf::Message *msg) {
+  gf::MessageStatus Hero::onGameOver([[maybe_unused]] gf::Id id, [[maybe_unused]] gf::Message *msg) {
     assert(id == GameOver::type);
-    gf::unused(id, msg);
     m_status = Status::Dying;
     return gf::MessageStatus::Keep;
   }
